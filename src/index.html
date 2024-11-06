@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <script defer src="/scripts/main.js"></script>
+    <title>2D Snake Game</title>
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="sub-container">
+        <div class="meta-container">
+          <div class="score">SCORE: <span data-score></span></div>
+          <div class="score">HIGHEST: <span id="highest-score"></span></div>
+        </div>
+        <canvas id="canvas" width="600" height="600"></canvas>
+        <div class="control-container">
+          <div></div>
+          <button onclick="Game.snake.moveUp()" class="control-btn">UP</button>
+          <div></div>
+          <button onclick="Game.snake.moveLeft()" class="control-btn">
+            LEFT
+          </button>
+          <button onclick="Game.snake.moveDown()" class="control-btn">
+            DOWN
+          </button>
+          <button onclick="Game.snake.moveRight()" class="control-btn">
+            RIGHT
+          </button>
+        </div>
+      </div>
+      <div id="restart-dialog" class="restart-container hidden">
+        <div class="restart-message">You score is <span data-score></span></div>
+        <button onclick="Game.restart()" class="try-again-btn">
+          Try Again
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
