@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=keyboard_arrow_down,keyboard_arrow_left,keyboard_arrow_right,keyboard_arrow_up,pause,play_arrow,refresh"
+    />
+    <link rel="stylesheet" href="/css/dist/main.css" />
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+      integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+    <script defer src="/js/main.js"></script>
+    <title>2D Snake Game</title>
+  </head>
+  <body>
+    <div
+      class="flex h-full flex-col items-center justify-center gap-6 md:flex-row"
+    >
+      <div class="grid gap-2">
+        <div
+          class="flex h-10 w-fit items-center justify-center gap-1.5 rounded-md bg-slate-900 px-4 font-medium text-slate-500 shadow-md"
+        >
+          High Score: <span data-high-score>0</span>
+        </div>
+        <div class="flex justify-between">
+          <div
+            class="flex h-10 w-fit items-center justify-center gap-1.5 rounded-md bg-slate-900 px-4 font-medium text-slate-500 shadow-md"
+          >
+            Score: <span data-score>0</span>
+          </div>
+          <div class="flex gap-2">
+            <button onclick="Game.restartGame()" class="btn icon">
+              <i class="material-symbols-outlined">refresh</i>
+            </button>
+            <button onclick="Game.pauseGame()" class="btn icon">
+              <i class="material-symbols-outlined">pause</i>
+            </button>
+          </div>
+        </div>
+        <canvas
+          id="canvas"
+          class="size-[90vw] bg-slate-900 md:size-[600px]"
+        ></canvas>
+      </div>
+      <div
+        class="grid grid-cols-3 gap-2 md:grid-cols-1 md:[&>*]:col-start-auto md:[&>*]:row-start-auto"
+      >
+        <button
+          onclick="Game.snake.changeDirection('up')"
+          class="btn icon col-start-2"
+        >
+          <i class="material-symbols-outlined">keyboard_arrow_up</i>
+        </button>
+        <button
+          onclick="Game.snake.changeDirection('right')"
+          class="btn icon col-start-3 row-start-2"
+        >
+          <i class="material-symbols-outlined">keyboard_arrow_right</i>
+        </button>
+        <button
+          onclick="Game.snake.changeDirection('down')"
+          class="btn icon col-start-2 row-start-2"
+        >
+          <i class="material-symbols-outlined">keyboard_arrow_down</i>
+        </button>
+        <button
+          onclick="Game.snake.changeDirection('left')"
+          class="btn icon col-start-1 row-start-2"
+        >
+          <i class="material-symbols-outlined">keyboard_arrow_left</i>
+        </button>
+      </div>
+    </div>
+    <div
+      id="pause-screen"
+      class="fixed inset-0 flex hidden flex-col items-center justify-center gap-2 bg-slate-800"
+    >
+      <div class="text-center">
+        <span class="text-2xl font-bold">GAME PAUSED</span>
+        <p class="text-sm font-bold">
+          Your current score is <span data-score>0</span>
+        </p>
+      </div>
+      <div class="space-x-2">
+        <button onclick="Game.continueGame()" class="btn icon">
+          <i class="material-symbols-outlined">play_arrow</i>
+        </button>
+        <button onclick="Game.restartGame()" class="btn icon">
+          <i class="material-symbols-outlined">refresh</i>
+        </button>
+      </div>
+    </div>
+    <div
+      id="end-screen"
+      class="fixed inset-0 flex hidden flex-col items-center justify-center gap-2 bg-slate-800"
+    >
+      <div class="text-center">
+        <span class="text-2xl font-bold">GAME OVER</span>
+        <p class="text-sm font-bold">
+          Your got a score of <span data-high-score>0</span>
+        </p>
+      </div>
+      <div class="space-x-2">
+        <button onclick="Game.restartGame()" class="btn icon">
+          <i class="material-symbols-outlined">refresh</i>
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
